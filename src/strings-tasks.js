@@ -377,8 +377,16 @@ function reverseWords(str) {
  *   invertCase('JavaScript is Fun') => 'jAVAsCRIPT IS fUN'
  *   invertCase('12345') => '12345'
  */
-function invertCase(/* str */) {
-  throw new Error('Not implemented');
+function invertCase(str) {
+  let output = '';
+  for (let i = 0; i < str.length; i += 1) {
+    if (str[i] === str[i].toUpperCase()) {
+      output += str[i].toLowerCase();
+    } else {
+      output += str[i].toUpperCase();
+    }
+  }
+  return output;
 }
 
 /**
@@ -408,8 +416,11 @@ function getStringFromTemplate(firstName, lastName) {
  *   extractNameFromTemplate('Hello, John Doe!') => 'John Doe'
  *   extractNameFromTemplate('Hello, Chuck Norris!') => 'Chuck Norris'
  */
-function extractNameFromTemplate(/* value */) {
-  throw new Error('Not implemented');
+function extractNameFromTemplate(value) {
+  const fullString = value.split(' ');
+  const firstName = fullString[fullString.length - 2];
+  const lastName = fullString[fullString.length - 1].split('!').join('');
+  return `${firstName} ${lastName}`;
 }
 
 /**
@@ -423,8 +434,12 @@ function extractNameFromTemplate(/* value */) {
  *   unbracketTag('<span>') => 'span'
  *   unbracketTag('<a>') => 'a'
  */
-function unbracketTag(/* str */) {
-  throw new Error('Not implemented');
+function unbracketTag(str) {
+  const stuck = [];
+  for (let i = 1; i < str.length - 1; i += 1) {
+    stuck.push(str[i]);
+  }
+  return stuck.join('');
 }
 
 /**
@@ -457,7 +472,7 @@ function extractEmails(str) {
  *
  *   'hello' => 'uryyb'
  *   'Why did the chicken cross the road?' => 'Jul qvq gur puvpxra pebff gur ebnq?'
- *   'Gb trg gb gur bgure fvqr!' => 'To get to the other side!'
+ *   'Gb trg gb gur bgfvqure r!' => 'To get to the other side!'
  *   'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
  *    => 'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm'
  *
